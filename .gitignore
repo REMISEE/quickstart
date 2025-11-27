@@ -1,6 +1,9 @@
+__pycache__/
+*.pyc
+
+datasets/
 logs/
 checkpoints/
-datasets/
 hf_cache/
-__pycache__/
+
 *.parquet

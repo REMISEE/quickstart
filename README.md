@@ -14,15 +14,15 @@
   ├── environment.yml
   ├── README.md
   └── scripts/
-  ├── prepare_gsm8k.py
-  └── run_quickstart.py
+        ├── prepare_gsm8k.py
+        └── run_quickstart.py
   ```
   
   运行过程中会自动在这些地方生成文件：
    ```
   /data/<username>/datasets/gsm8k/   # prepare_gsm8k.py 下载的数据
-      ├── train.parquet
-      └── test.parquet
+                              ├── train.parquet
+                              └── test.parquet
   
   /data/<username>/quickstart/logs/  # 训练日志
   /data/<username>/quickstart/checkpoints/  # 训练产生的 checkpoints

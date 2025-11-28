@@ -2,6 +2,9 @@
 import datetime
 import subprocess
 from pathlib import Path
+import os   # ← 新增
+
+GPU_ID = "3"   # ← 想用哪块 GPU，就改这里，比如 "0" / "1" / "2" / "3"
 
 
 def main() -> None:
@@ -87,6 +90,8 @@ def main() -> None:
     # ============================================
     # 4. 启动训练并同时写 log（类似 2>&1 | tee）
     # ============================================
+    env = os.environ.copy()
+    env["CUDA_VISIBLE_DEVICES"] = GPU_ID
     with log_file.open("w", encoding="utf-8") as f:
         process = subprocess.Popen(
             cmd,
@@ -94,6 +99,7 @@ def main() -> None:
             stderr=subprocess.STDOUT,
             text=True,
             bufsize=1,
+            env=env,
         )
         assert process.stdout is not None
         for line in process.stdout:
